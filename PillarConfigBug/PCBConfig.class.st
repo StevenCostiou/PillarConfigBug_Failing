@@ -3,7 +3,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'propertyDictionary',
-		'parentConfig'
+		'parentConfig',
+		'mySetting'
 	],
 	#category : #PillarConfigBug
 }
@@ -19,6 +20,16 @@ PCBConfig >> doesNotUnderstand: aMessage [
 { #category : #'as yet unclassified' }
 PCBConfig >> lookupProperty: aSymbol [
 	^ self propertyDictionary at: aSymbol ifAbsent: [ self parentConfig ifNil: [ ^ nil ] ifNotNil: [ ^ self parentConfig lookupProperty: aSymbol] ] 
+]
+
+{ #category : #accessing }
+PCBConfig >> mySetting [
+	^ mySetting
+]
+
+{ #category : #accessing }
+PCBConfig >> mySetting: aValue [
+	mySetting := aValue
 ]
 
 { #category : #accessing }
